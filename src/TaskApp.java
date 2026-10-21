@@ -76,7 +76,8 @@ public class TaskApp {
                 .append(escape(edit == null ? "" : edit.title)).append("'></label><label>Description<textarea name='description' maxlength='2000'>")
                 .append(escape(edit == null ? "" : edit.description)).append("</textarea></label><label><input type='checkbox' name='done' ")
                 .append(edit != null && edit.done ? "checked" : "").append("> Completed</label><br><button>Save task</button> <a class='button muted' href='/'>Cancel</a></form></section>");
-            html.append("<h2>Your tasks (").append(tasks.size()).append(")</h2>");
+                        html.append("<h2>Your tasks (").append(tasks.size()).append(", ")
+                .append(tasks.values().stream().filter(task -> task.done).count()).append(" completed)</h2>");
             if (tasks.isEmpty()) html.append("<section>No tasks yet. Create your first task above.</section>");
             for (Map.Entry<Integer,Task> entry : tasks.entrySet()) {
                 int id = entry.getKey(); Task t = entry.getValue();
