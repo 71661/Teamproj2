@@ -9,4 +9,4 @@ if errorlevel 1 (
 if not exist out mkdir out
 javac -encoding UTF-8 -d out src\TaskApp.java
 if errorlevel 1 exit /b 1
-java -cp out TaskApp
+java "-Djdk.net.unixdomain.tmpdir=%CD%\out\unused-socket-directory" -cp out TaskApp
